@@ -51,6 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockDevil: 1
   blockAngel: 1
+  killDevil: 0
+  killAngel: 0
   obstacleCollider: {fileID: 953007423537025532}
 --- !u!1839735485 &9004720974476963938
 Tilemap:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Form
 {
@@ -16,11 +17,13 @@ public class Player : MonoBehaviour
     private int maxJump;
     private int currJump = 0;
 
+    private int gems = 0;
+
     private string form; 
     public Sprite devilSprite;
     public Sprite angelSprite;
 
-    private float jumpVelocity = 22.5f;
+    private float jumpVelocity = 25.5f;
 
     private void switchForm()
     {
@@ -65,12 +68,29 @@ public class Player : MonoBehaviour
         return form;
     }
     
+    public void die()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public int getGems()
+    {
+        return gems;
+    }
+
+    public void addGem()
+    {
+        gems++;
+        Debug.Log("Gems: " + gems.ToString());
+    }
+
     public void resetJump()
     {
         currJump = 0;
     }
 
-    void OnCollisionEnter2D (Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         /* Checking if the player is on the ground. */
         if (collision.contacts[0].point.y <= transform.position.y)
