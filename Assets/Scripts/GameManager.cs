@@ -67,12 +67,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        mainCamera.transform.Translate(speed * cameraSpeedFactor, 0, 0);
 
-        if (!IsVisible(mainCamera.GetComponent<Camera>(), player))
+        if (Input.GetKey("escape"))
         {
-            player.GetComponent<Player>().die();
+            SceneManager.LoadScene(0);
         }
+
+        mainCamera.transform.Translate(speed * cameraSpeedFactor, 0, 0);
 
         playerRB.velocity = new Vector2(speed, playerRB.velocity.y);
         speed = ++frameCount % frameCycle == 0 ? speed + increasingSpeed : speed;
